@@ -1,8 +1,8 @@
 var RickDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node = $('<span class="dancer rick spin"><img src="resources/rick_face.png"></span>');
+  this.$node.mouseover(this.moveToFurthestDancer.bind(this));
   this.setPosition(top, left);
-
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   this.oldStep = Dancer.prototype.originalStep;
@@ -20,5 +20,24 @@ RickDancer.prototype.step = function() {
   this.oldStep();
 };
 
-RickDancer.prototype.moveToNearest = function() {
+RickDancer.prototype.moveToFurthestDancer = function() {
+  var furthestDancer = null;
+  var furthestDistance = 0;
+
+  for (var dancer of window.dancers) {
+    var dancerTop = dancer.top;
+    var dancerLeft = dancer.left;
+
+    var currentDancerTop = this.top;
+    var currentDancerLeft = this.left;
+
+    var combinedDistance = (currentDancerTop - dancerTop) ** 2 + (currentDancerLeft - dancerLeft) ** 2;
+    console.log(combinedDistance);
+    if (combinedDistance > furthestDistance) {
+      furthestDancer = dancer;
+      furthestDistance = combinedDistance;
+    } 
+  }
+
+  this.setPosition(furthestDancer.top, furthestDancer.left);
 }
