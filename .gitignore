@@ -2,6 +2,9 @@
 
 ### node etc ###
 
+# Mac OS Caching
+*.DS_Store
+
 # Logs
 logs
 *.log
