@@ -1,5 +1,11 @@
 $(document).ready(function() {
   window.dancers = [];
+  var maximumHeight = $("body").height() - 200;
+  var minimumHeight = 50;
+
+  var getNewMaxHeight = function () {
+    maximumHeight = $("body").height() - 200;
+  }
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -22,13 +28,37 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
+    getNewMaxHeight();
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
+      Math.floor(Math.random() * (maximumHeight - minimumHeight)) + minimumHeight,
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer);
   });
+
+  $('.lineUpHorizontalButton').on('click', function(event) {
+    getNewMaxHeight();
+    var numDancers = window.dancers.length;
+    var spacing = $("body").width() / numDancers;
+    var centerLinePosition = maximumHeight / 2;
+    var currentHorizontalPosition = 0;
+
+    for (var dancer of window.dancers) {
+      dancer.setPosition(centerLinePosition, currentHorizontalPosition);
+      currentHorizontalPosition += spacing;
+    }
+  });
+
+  $('.spreadOutButton').on('click', function(event) {
+    getNewMaxHeight();
+    for (var dancer of window.dancers) {
+      var verticalPosition = Math.floor(Math.random() * (maximumHeight - minimumHeight)) + minimumHeight;
+      dancer.setPosition(verticalPosition, $("body").width() * Math.random());
+    }
+  });
+
+
 });
 

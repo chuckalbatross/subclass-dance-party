@@ -1,7 +1,8 @@
 var RickDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="rick"><img src="resources/rick_face.png"></span>');
+  this.$node = $('<span class="dancer rick spin"><img src="resources/rick_face.png"></span>');
   this.setPosition(top, left);
+
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
   this.oldStep = Dancer.prototype.originalStep;
@@ -17,5 +18,7 @@ RickDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   this.oldStep();
-  this.$node.toggle();
 };
+
+RickDancer.prototype.moveToNearest = function() {
+}
