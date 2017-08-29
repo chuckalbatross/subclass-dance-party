@@ -27,5 +27,5 @@ MortyDancer.prototype.mouseover = function() {
 };
 
 MortyDancer.prototype.mouseout = function() {
-  
+  $(this).attr('src', 'mortyPose1.png');
 };
