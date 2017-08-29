@@ -12,6 +12,7 @@ body, a:link, a:visited, a:active{
 .title, .addDancerButton{
   float:right;
   length:auto;
+  margin-left: 20px;
 }
 .topbar{
   height:32px;

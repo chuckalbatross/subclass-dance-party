@@ -1,6 +1,6 @@
 var MortyDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="morty"><img src="mortyFace.png"></span>');
+  this.$node = $('<span class="morty"><img src="mortyPose1.png"></span>');
   this.setPosition(top, left);
 
   this.oldStep = Dancer.prototype.originalStep;
