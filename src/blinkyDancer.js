@@ -3,7 +3,7 @@ var BlinkyDancer = function(top, left, timeBetweenSteps) {
   this.$node.addClass('blinky');
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
-  this.oldStep = Dancer.prototype.originalStep;
+  this.oldStep = Dancer.prototype.originalStep; //this.step
   this.oldStep.call(this);
 };
 
