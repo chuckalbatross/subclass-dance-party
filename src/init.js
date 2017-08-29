@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   var getNewMaxHeight = function () {
     maximumHeight = $("body").height() - 200;
-  }
+  };
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
