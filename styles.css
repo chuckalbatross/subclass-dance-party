@@ -64,8 +64,5 @@ body, a:link, a:visited, a:active{
     to {transform:rotate(360deg);}
 }
 
-iframe {
-  height: 0;
-  width: 0;
-}
+
 

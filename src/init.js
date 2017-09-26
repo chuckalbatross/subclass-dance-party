@@ -42,7 +42,7 @@ $(document).ready(function() {
     getNewMaxHeight();
     var numDancers = window.dancers.length;
     var spacing = $("body").width() / numDancers;
-    var centerLinePosition = maximumHeight / 1.15;
+    var centerLinePosition = maximumHeight / 1.4;
     var currentHorizontalPosition = 0;
 
     for (var dancer of window.dancers) {
